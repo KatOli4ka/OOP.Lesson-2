@@ -41,6 +41,6 @@ public class Human {
 
     }
     public String toString() {
-        return "Привет. Меня зовут - " + this.name + ". Я из города - " +getTown()  + ". Я родился в - " + getTown() +" году. Я работаю на должности - "+ this.jobTitle+". Будем знакомы!" ;
+        return "Привет. Меня зовут - " + this.name + ". Я из города - " +getTown() +". Я родился в "+getYearOfBirth()+" году. Я работаю на должности - "+ this.jobTitle+". Будем знакомы!" ;
     }
 }
