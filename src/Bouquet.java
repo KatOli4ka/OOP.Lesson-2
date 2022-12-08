@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Locale;
 
 public class Bouquet {
   final private  Flower[] flowers;
@@ -44,8 +45,8 @@ public class Bouquet {
         for (Flower flower:flowers) {
             result.append(flower).append("\n");
         }
-        result.append("Срок стояния букета: ").append(minLifeSpan).append(" дней").append("\n");
-        result.append("Стоимость букета: ").append(sum).append("руб");
+        result.append("Срок стояния букета: ").append(minLifeSpan).append(" дн.").append("\n");
+        result.append("Стоимость букета: ").append(String.format(Locale.US,"%.2f",sum)).append(" руб.");
         return result.toString();
     }
 }
