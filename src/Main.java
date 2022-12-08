@@ -19,7 +19,7 @@ public class Main {
                 "", "седан", "ю122юю122", 5, true);
         System.out.println(lada.toString());
         Car audi = new Car("Audi", "null", "черный", 3.0, "Германия", 2020,
-                "", "", "", 7, false);
+                "", "", "45", 7, false);
         System.out.println(audi.toString());
         Car bmw = new Car("BMW", "Z8", "черный", 0, "Германия", 2021,
                 "автомат", "", "125369874", 2, true);
