@@ -1,5 +1,7 @@
 package transport;
 
+import java.time.LocalDate;
+
 public class Car {
     final private String brand;
     final private String model;
@@ -12,13 +14,13 @@ public class Car {
     final private String regNumber;
     private int seatsCount;
     private boolean summerTires;
-
-
+    private Key key;
+    private Insurance insurance;
 
     public Car(String brand, String model, String color,
                double engineVolume, String country, int year,
                String transmission,String bodyType,String regNumber,
-               int seatsCount, boolean summerTires) {
+               int seatsCount, boolean summerTires,Key key,Insurance insurance){
         if (model == null|| model.isEmpty()){
             model="default";
         }   this.model = model;
@@ -43,6 +45,30 @@ public class Car {
         }   this.regNumber=regNumber;
         setSeatsCount(seatsCount);
         this.summerTires=summerTires;
+        setKey(null);
+        setInsurance(null);
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        if (key == null) {
+            key = new Key(false, false);
+        }
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        if (insurance == null) {
+            insurance = new Insurance(null, 9800, null);
+        }
+        this.insurance = insurance;
     }
 
     public void setSeatsCount(int seatsCount) {
@@ -110,12 +136,87 @@ public class Car {
                 Character.isDigit(regNumber.charAt(6))&&Character.isDigit(regNumber.charAt(7))&&
                 Character.isDigit(regNumber.charAt(8));
     }
-        public String toString() {
+    public String toString() {
         return this.brand+ " "+this.model+", "+this.year+" года выпуска, сборка - "+this.country+
                 ", цвет кузова- "+this.color+", объем двигателя - "+this.engineVolume+
                 ", коробка передач -"+getTransmission()+",тип кузова - "+getBodyType()+
                 ", регистрационный номер - "+isCorrectRegNumber()+", количество мест - "+getSeatsCount()+
-                ", тип резины - "+(isSummerTires()?"летняя":"зимняя");
+                ", тип резины - "+(isSummerTires()?"летняя":"зимняя"+key+insurance);
+    }
+    public static class Key {
+        final private boolean remoteEngineStart;
+        final private boolean keylessAccess;
+
+        public Key(boolean remoteEngineStart, boolean keylessAccess) {
+            this.remoteEngineStart = remoteEngineStart;
+            this.keylessAccess = keylessAccess;
+        }
+
+        public boolean isRemoteEngineStart() {
+            return remoteEngineStart;
+        }
+
+        public boolean isKeylessAccess() {
+            return keylessAccess;
+        }
+
+        @Override
+        public String toString() {
+            return ". Ключ: " +
+                    "удаленный доступ двигателя = " + remoteEngineStart +
+                    ", бесключевой доступ = " + keylessAccess;
+        }
+    }
+
+    public static class Insurance {
+        private final LocalDate validity;
+        private final int cost;
+        private final String number;
+
+        public Insurance(LocalDate validity, int cost, String number) {
+            if (validity == null) {
+                validity = LocalDate.now().plusDays(365);
+            }  this.validity = validity;
+            if (cost <=0) {
+                cost=10000;
+            }  this.cost = cost;
+            if (number == null || number.isEmpty()) {
+                number="q1q1q1q1q1";
+            }  this.number = number;
+
+        }
+
+        public void printCheckExpiredValidity() {
+            boolean ExpiredValidity= validity.isAfter(LocalDate.now());
+            if (ExpiredValidity){
+                System.out.println("Срок действия страховки истек. Оформите новую.");
+            }
+        }
+        public void printCheckNumber() {
+            boolean correct=number.length()==10;
+            if(!correct){
+                System.out.println("Номер страховки некорекктный!");
+            }
+        }
+        public LocalDate getValidity() {
+            return validity;
+        }
+
+        public int getCost() {
+            return cost;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        @Override
+        public String toString() {
+            return ". Страховка: " +
+                    "срок действия = " + validity +
+                    ", стоимость = " + cost +
+                    ", номер ='" + number + '\'';
+        }
     }
 }
 

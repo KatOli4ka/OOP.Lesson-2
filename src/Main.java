@@ -16,19 +16,19 @@ public class Main {
 
         System.out.println("Задание 2");
         Car lada = new Car("", "Granta", "желтый", 1.7, "Россия", 2015,
-                "", "седан", "ю122юю122", 5, true);
+                "", "седан", "ю122юю122", 5, true,null,null);
         System.out.println(lada.toString());
         Car audi = new Car("Audi", "null", "черный", 3.0, "Германия", 2020,
-                "", "", "45", 7, false);
+                "", "", "45", 7, false,null,null);
         System.out.println(audi.toString());
         Car bmw = new Car("BMW", "Z8", "черный", 0, "Германия", 2021,
-                "автомат", "", "125369874", 2, true);
+                "автомат", "", "125369874", 2, true,null,null);
         System.out.println(bmw.toString());
         Car kia = new Car("Kia", "Sportage 4-го поколения", "", 2.4, "Южная Корея",
-                2018, "автомат", "седан", "д123д123д", 4, false);
+                2018, "автомат", "седан", "д123д123д", 4, false,null,null);
         System.out.println(kia.toString());
         Car hyundai = new Car("Hyundai", "Avante", "оранжевый", 1.6, "Южная Корея",
-                0, "", "седан", "э123ээ111", 6, true);
+                0, "", "седан", "э123ээ111", 6, true,null,null);
         System.out.println(hyundai.toString());
 
         ///
