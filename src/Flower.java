@@ -8,20 +8,20 @@ public class Flower {
 
     public Flower (String flowerName,String flowerColor,String country,double cost,int lifeSpan) {
         if (flowerName== null|| flowerName.isEmpty()){
-            this.flowerName="Тип цветка не указан";
-        }   else this.flowerName = flowerName;
+            flowerName="Тип цветка не указан";
+        }   this.flowerName = flowerName;
         if (flowerColor== null|| flowerColor.isEmpty()){
-            this.flowerColor="белый";
-        }   else this.flowerColor = flowerColor;
+            flowerColor="белый";
+        }   this.flowerColor = flowerColor;
         if (country== null|| country.isEmpty()){
-            this.country="Россия";
-        }   else this.country = country;
+            country="Россия";
+        }   this.country = country;
         if (cost<=0){
-            this.cost=1;
-        }   else this.cost = cost;
+            cost=1;
+        }   this.cost = cost;
         if (lifeSpan <= 0) {
-            this.lifeSpan=3;
-        }else this.lifeSpan=lifeSpan;
+            lifeSpan=3;
+        }   this.lifeSpan=lifeSpan;
   }
 
     public int getLifeSpan() {
